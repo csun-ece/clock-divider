@@ -35,8 +35,19 @@ priority over button 3.
 - When switches are in the "0010" configuration LEDs shall reflect the output of shift left ring counter.
 - When switches are in the "0100" configuration LEDs shall reflect the output of binary counter.
 - When switches are in the "1000" configuration LEDs shall reflect the output of johnson counter.
+- The ports in `top.vhd` should map correctly to the XDC constraint file provided here [Zybo-Z7-Master.xdc](./constrs/Zybo-Z7-Master.xdc)
 
+The following is an example of ports matching the XDS I/O names:
+``` vhdl
+entity top is
+    Port ( sysclk : in STD_LOGIC;
+           sw : in STD_LOGIC_VECTOR (3 downto 0);
+           btn: in STD_LOGIC_VECTOR (3 downto 0);
+           led : out STD_LOGIC_VECTOR (3 downto 0));
+end top;
+```
 - Testbench and report utilization after the implementation should be provided in the final report.
+- The design must pass all the design flow steps including synthesize, implementation and bit stream generate, 
 
 ## Tasks
 
@@ -90,14 +101,3 @@ Take a screenshot from the schematic and report it in the final report.
 
 Generate a bit steam, program your device, and make a video demo of your design 
 running on the hardware.  
-If you plan to use the provided XDC you should use the following port names in your
-`top.vhd` file:
-
-``` vhdl
-entity top is
-    Port ( sysclk : in STD_LOGIC;
-           sw : in STD_LOGIC_VECTOR (3 downto 0);
-           btn: in STD_LOGIC_VECTOR (3 downto 0);
-           led : out STD_LOGIC_VECTOR (3 downto 0));
-end top;
-```
